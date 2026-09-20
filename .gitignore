@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Note: dataset CSVs under data/ are intentionally NOT ignored.
+# They're small enough to track directly so each week's project
+# stays fully runnable right after cloning, no separate download needed.
