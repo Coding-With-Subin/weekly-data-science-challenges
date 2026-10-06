@@ -4,7 +4,7 @@ A growing weekly series of data science and machine learning projects, starting 
 
 ## How This Series Works
 
-Each week lives in its own folder with a complete, self-contained project: dataset, notebook, charts, and a README explaining the question, the findings, and the business recommendations. Skills build progressively, moving from analysis fundamentals toward the preprocessing and feature work that real ML projects depend on:
+Each week lives in its own folder with a complete, self-contained project: dataset, notebook, charts, and a README explaining the question, the findings, and the business recommendations. Skills build progressively, moving from analysis fundamentals toward the preprocessing, feature work, and modeling that real ML projects depend on:
 
 | Week | Project | Core Skill |
 |------|---------|-----------|
@@ -14,14 +14,15 @@ Each week lives in its own folder with a complete, self-contained project: datas
 | 04 | [Telco Customer Churn](week04-telco-churn/) | Feature engineering |
 | 05 | [Tech Layoffs](week05-tech-layoffs/) | Data preprocessing and cleaning |
 | 06 | [Used Car Price Analysis](week06-used-cars/) | Cleaning with judgment and feature engineering on clean data |
+| 07 | [Used Car Price Prediction](week07-price-prediction/) | First ML model: Linear Regression, train/test split, evaluation |
 
-More weeks are added regularly, moving from analysis and feature engineering toward full machine learning workflows (model training, evaluation, and deployment-style projects) as the series progresses.
+More weeks are added regularly, moving deeper into full machine learning workflows (model training, evaluation, and deployment-style projects) as the series progresses.
 
 ## Latest Week
 
-**Week 06: What Actually Drives a Used Car's Price?**
+**Week 07: Can We Predict a Used Car's Price?**
 
-Age drives the price, brand tier sets the level, and clean data makes the difference. This week cleans 4,009 used car listings (text numbers, split brand names, misleading blanks, one impossible price), then builds features on the cleaned data to test which factor explains price best.
+First machine learning week. Reuses Week 6's cleaned data and engineered features (car_age, mileage_per_year, brand_tier) to train a Linear Regression model. Overall R-squared is low (0.08), but tracing the error shows why: a dozen exotic cars (Bugatti, Rolls-Royce, Lamborghini) overwhelm the score. Scored on ordinary cars alone, R-squared roughly quadruples (0.33). The fix isn't more data, it's a third brand_tier category for exotics.
 
 ## Tools Used Across the Series
 
@@ -30,7 +31,8 @@ Age drives the price, brand tier sets the level, and clean data makes the differ
 * NumPy
 * Matplotlib / Seaborn
 * SciPy (where statistical testing is relevant)
-* Scikit-learn (planned, for upcoming ML weeks)
+* Scikit-learn (model training and evaluation, starting Week 07)
+* Joblib (model persistence)
 
 ## Repository Structure
 
@@ -72,11 +74,22 @@ weekly-data-science-challenges/
 │   ├── notebooks/analysis.ipynb
 │   └── reports/figures/
 │
-└── week06-used-cars/
+├── week06-used-cars/
+│   ├── README.md
+│   ├── data/raw/
+│   ├── notebooks/analysis.ipynb
+│   └── reports/figures/
+│
+└── week07-price-prediction/
     ├── README.md
-    ├── data/raw/
+    ├── data/
+    ├── scripts/
+    │   ├── prepare_data.py
+    │   ├── train_model.py
+    │   └── predict.py
     ├── notebooks/analysis.ipynb
-    └── reports/figures/
+    ├── model/
+    └── charts/
 ```
 
 Each week's folder is independently runnable. Its own README has the specific dataset link, setup steps, and findings for that week.

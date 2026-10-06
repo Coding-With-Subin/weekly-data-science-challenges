@@ -3,4 +3,8 @@ numpy
 matplotlib
 seaborn
 scipy
- 
+scikit-learn
+joblib
+jupyter
+notebook
+ipykernel
