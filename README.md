@@ -15,14 +15,15 @@ Each week lives in its own folder with a complete, self-contained project: datas
 | 05 | [Tech Layoffs](week05-tech-layoffs/) | Data preprocessing and cleaning |
 | 06 | [Used Car Price Analysis](week06-used-cars/) | Cleaning with judgment and feature engineering on clean data |
 | 07 | [Used Car Price Prediction](week07-price-prediction/) | First ML model: Linear Regression, train/test split, evaluation |
+| 08 | [Telco Churn Prediction](week08-churn-prediction/) | Classification: Logistic Regression, accuracy vs recall, confusion matrix |
 
 More weeks are added regularly, moving deeper into full machine learning workflows (model training, evaluation, and deployment-style projects) as the series progresses.
 
 ## Latest Week
 
-**Week 07: Can We Predict a Used Car's Price?**
+**Week 08: Can We Predict Which Customers Will Churn?**
 
-First machine learning week. Reuses Week 6's cleaned data and engineered features (car_age, mileage_per_year, brand_tier) to train a Linear Regression model. Overall R-squared is low (0.08), but tracing the error shows why: a dozen exotic cars (Bugatti, Rolls-Royce, Lamborghini) overwhelm the score. Scored on ordinary cars alone, R-squared roughly quadruples (0.33). The fix isn't more data, it's a third brand_tier category for exotics.
+First classification week. Reuses the Week 4 Telco data and features to train a Logistic Regression model that predicts churn for each customer. Only about 1 in 4 customers churns, so a model that never predicts churn already scores 73.5% accuracy. The default model reaches 80.1% accuracy but catches only 198 of 374 churners. Refitting with `class_weight="balanced"` drops accuracy back to the baseline yet catches 297 of 374 churners, at about 2 extra false alarms per extra churner caught. Both models rank customers equally well (AUC 0.84), so the right choice depends on what a missed churner costs compared with a wasted retention call.
 
 ## Tools Used Across the Series
 
@@ -80,7 +81,15 @@ weekly-data-science-challenges/
 │   ├── notebooks/analysis.ipynb
 │   └── reports/figures/
 │
-└── week07-price-prediction/
+├── week07-price-prediction/
+│   ├── README.md
+│   ├── data/
+│   ├── scripts/
+│   ├── notebooks/analysis.ipynb
+│   ├── model/
+│   └── charts/
+│
+└── week08-churn-prediction/
     ├── README.md
     ├── data/
     ├── scripts/
@@ -96,13 +105,15 @@ Each week's folder is independently runnable. Its own README has the specific da
 
 ## How to Run Any Week
 
+Python 3.12 or 3.13 is recommended.
+
 ```bash
 git clone https://github.com/Coding-With-Subin/weekly-data-science-challenges.git
 cd weekly-data-science-challenges
 pip install -r requirements.txt
 ```
 
-Then open the specific week's folder, download its dataset per that week's README, and run its notebook.
+Then open the specific week's folder, download its dataset per that week's README if it is not included, and run its notebook.
 
 ## License
 
